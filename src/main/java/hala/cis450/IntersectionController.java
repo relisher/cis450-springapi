@@ -5,8 +5,7 @@
  */
 package hala.cis450;
 
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.sql.SQLException;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,14 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IntersectionController implements ErrorController {
     
-    @Autowired
-    private DynamoDBQuery dynamoQuery;
+    DynamoDBQuery dynamoQuery = new DynamoDBQuery();
     
     @RequestMapping("/api/test")
-    public String test() {
+    public String test() throws SQLException {
         return dynamoQuery.query();
     }
     
+    @RequestMapping("/api/gender")
+    public String gender() throws SQLException {
+        return dynamoQuery.genderQuery();
+    }
     
     @RequestMapping("/error")
     public String error() {
