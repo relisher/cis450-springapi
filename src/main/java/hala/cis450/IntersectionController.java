@@ -29,6 +29,36 @@ public class IntersectionController implements ErrorController {
         return dynamoQuery.genderQuery();
     }
     
+    @RequestMapping("/api/gender-married")
+    public String genderMarried() throws SQLException {
+        return dynamoQuery.marriedGender();
+    }
+    
+    @RequestMapping("/api/gender-orientation")
+    public String genderOrientation() throws SQLException {
+        return dynamoQuery.genderOrientation();
+    }
+    
+    @RequestMapping("/api/married")
+    public String married() throws SQLException {
+        return dynamoQuery.married();
+    }
+    
+    @RequestMapping("/api/married-location")
+    public String marriedLocation() throws SQLException {
+        return dynamoQuery.marriedLocation();
+    }
+    
+    @RequestMapping("/api/young-location")
+    public String youthful() throws SQLException {
+        return dynamoQuery.youngUsers();
+    }
+    
+    @RequestMapping("/api/lgbtq-demographic")
+    public String lgbtq() throws SQLException {
+        return dynamoQuery.lgbtqLocation();
+    }
+    
     @RequestMapping("/error")
     public String error() {
             return "<!DOCTYPE html>\n" +
