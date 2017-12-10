@@ -24,11 +24,6 @@ public class IntersectionController implements ErrorController {
         return dynamoQuery.query();
     }
     
-    @RequestMapping("/api/gender")
-    public String gender() throws SQLException {
-        return dynamoQuery.genderQuery();
-    }
-    
     @RequestMapping("/api/gender-married")
     public String genderMarried() throws SQLException {
         return dynamoQuery.marriedGender();

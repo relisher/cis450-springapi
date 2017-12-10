@@ -225,51 +225,6 @@ public class DynamoDBQuery {
 		return sb.toString();
     }
     
-    public String genderQuery() {
-    	StringBuilder sb = new StringBuilder();
-    	sb.append("count,descriptor\n");
-		Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
-		expressionAttributeValues.put(":valerie", new AttributeValue().withS("f")); 
-		expressionAttributeValues.put(":orientation", new AttributeValue().withS("straight")); 
-		ScanRequest scanRequest = new ScanRequest()
-		   // .withTableName("OkCupid")
-			.withTableName("OkCupid")
-		    .withFilterExpression("sex = :valerie and orientation = :orientation")
-		    .withExpressionAttributeValues(expressionAttributeValues);
-		
-		ScanResult result = client.scan(scanRequest);
-		sb.append(result.getCount().toString() + ","+"straight females\n");
-		
-		ScanRequest scanRequest2 = new ScanRequest()
-				   // .withTableName("OkCupid")
-					.withTableName("OkCupid")
-				    .withFilterExpression("sex = :valerie and orientation <> :orientation")
-				    .withExpressionAttributeValues(expressionAttributeValues);
-				
-		ScanResult result2 = client.scan(scanRequest2);
-		sb.append(result2.getCount().toString() + ","+"gay females\n");
-		
-		ScanRequest scanRequest3 = new ScanRequest()
-				   // .withTableName("OkCupid")
-			.withTableName("OkCupid")
-			.withFilterExpression("sex = :valerie and orientation = :orientation")
-		    .withExpressionAttributeValues(expressionAttributeValues);
-				
-			ScanResult result3 = client.scan(scanRequest3);
-			sb.append(result3.getCount().toString() + ","+"straight males\n");
-				
-		ScanRequest scanRequest4 = new ScanRequest()
-						   // .withTableName("OkCupid")
-			.withTableName("OkCupid")
-			.withFilterExpression("sex = :valerie and orientation <> :orientation")
-			.withExpressionAttributeValues(expressionAttributeValues);
-						
-		ScanResult result4 = client.scan(scanRequest4);
-		sb.append(result4.getCount().toString() + ","+"gay males");
-
-		return sb.toString();
-        }
-    
         public String youngUsers(){
     	StringBuilder sb = new StringBuilder();
     	sb.append("cityname,zillow20,okcupid20pop\n");
